@@ -5,11 +5,15 @@
 
 <%
 	String id = request.getParameter("id_board");
-	List<BoardVO> list = (List<BoardVO>) request.getAttribute("data");
+	List<BoardVO> list = (List)request.getAttribute("data");
 %>
 <title>게시판</title>
 </head>
 <style>
+.itemRow:hover{
+	background: wheat;
+	cursor:pointer;
+}
 table {
 	border: black 1px solid;
 	margin: 10px auto;
@@ -35,6 +39,8 @@ div {
 }
 </style>
 <body>
+	<div>${Error}</div>
+	<div>${Warring}</div>
 	<div>
 		<h1>게시판 리스트</h1>
 	</div>
@@ -48,7 +54,7 @@ div {
 		<%
 			for (BoardVO vo : list) {
 		%>
-		<tr>
+		<tr class="itemRow" onclick="moveToDetail(<%=vo.getId_board()%>)">
 			<td><%=vo.getId_board()%></td>
 			<td><%=vo.getTitle()%></td>
 			<td><%=vo.getR_dt()%></td>
@@ -59,7 +65,16 @@ div {
 		%>
 	</table>
 	<div>
-		<button>글쓰기</button>
+		<button onclick="moveToWrite()">글쓰기</button>
 		</div>
+		<script type="text/javascript">
+		function moveToDetail(PK){
+			console.log(PK);
+			location.href = 'BoardDetail?id='+PK;
+		}
+		function moveToWrite(){
+			location.href = 'BoardRegmod';
+		}
+		</script>
 </body>
 </html>
