@@ -17,9 +17,10 @@ public class BoardDetailDAO {
 				+ ", ctnt"
 				+ ", r_dt "
 				+ ", id_student "
+				+ ", nm"
 				
 				+ " FROM "
-				+ " t_board "
+				+ " VIEW_BOARD_LIKE "
 				
 				+ " WHERE "
 				+ " id_board=?";
@@ -49,6 +50,7 @@ public class BoardDetailDAO {
 				vo.setCtnt( rs.getNString("ctnt") );
 				vo.setR_dt( rs.getNString("r_dt") );
 				vo.setId_student( rs.getInt("id_student") );
+				vo.setId_name( rs.getNString("nm") );
 				
 			}
 			System.out.println("completed Board data");

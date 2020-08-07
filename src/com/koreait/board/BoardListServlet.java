@@ -23,6 +23,7 @@ public class BoardListServlet extends HttpServlet {
 		request.setAttribute("data", BoardDAO.selBoardList());
 		request.setAttribute("Warring", request.getParameter("warring"));
 		request.setAttribute("Error", request.getParameter("err"));
+		request.setAttribute("id", request.getParameter("id_board"));
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/VIEW/boardList.jsp");
 		rd.forward(request, response);
 		//response.getWriter().append("Served at: ").append(request.getContextPath());

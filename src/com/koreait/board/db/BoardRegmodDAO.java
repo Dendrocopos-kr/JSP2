@@ -29,7 +29,7 @@ public class BoardRegmodDAO {
 			System.out.println("completed SQL");
 			// ps.setString(1 , String) // (?순서, String)
 			rs = ps.executeUpdate();
-			System.out.println("Succeded "+rs+"InsertQuery");
+			System.out.println("Succeded '"+rs+"' InsertQuery");
 			// select => executeQuery();
 			// 그 외는 다른거
 			// board.setId_board(rs.getInt("ID_BOARD"));
@@ -73,7 +73,7 @@ public class BoardRegmodDAO {
 			System.out.println("completed SQL");
 			// ps.setString(1 , String) // (?순서, String)
 			rs = ps.executeUpdate();
-			System.out.println("Succeded "+rs+" UpdateQuery");
+			System.out.println("Succeded '"+rs+"' UpdateQuery");
 			// select => executeQuery();
 			// 그 외는 다른거
 			// board.setId_board(rs.getInt("ID_BOARD"));

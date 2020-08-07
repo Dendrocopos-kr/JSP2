@@ -11,6 +11,7 @@ public class BoardDAO {
 	public static List<BoardVO> selBoardList(){
 		 
 		String sql = " select id_board, title, r_dt, id_student from t_board order by id_board DESC";
+		sql = " select id_board,title,r_dt,nm from VIEW_BOARD_LIKE order by id_board DESC ";
 		return insert_data(sql);
 	}
 	
@@ -36,7 +37,8 @@ public class BoardDAO {
 				vo.setTitle( rs.getNString("title") );
 				//vo.setCtnt( rs.getNString("ctnt") );
 				vo.setR_dt( rs.getNString("r_dt") );
-				vo.setId_student( rs.getInt("id_student") );
+				//vo.setId_student( rs.getInt("id_student") );
+				vo.setId_name(rs.getNString("nm"));
 				
 				list.add( vo );
 			}

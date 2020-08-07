@@ -7,6 +7,7 @@ public class BoardVO {
 	private String ctnt;
 	private String r_dt;
 	private int id_student;
+	private String id_name;
 	
 	public int getId_board() {return id_board;}
 	public void setId_board(int id_board) {this.id_board = id_board;}
@@ -18,4 +19,6 @@ public class BoardVO {
 	public void setR_dt(String r_dt) {this.r_dt = r_dt;}
 	public int getId_student() {return id_student;}
 	public void setId_student(int id_student) {this.id_student = id_student;}
+	public String getId_name() {return id_name;}
+	public void setId_name(String id_name) {this.id_name = id_name;}
 }

@@ -55,7 +55,7 @@ div textarea {
 				<textarea id="ctnt" name="ctnt">${data.ctnt }</textarea>
 			</div>
 			<div>
-				<label for="id">작성자:</label><input id="name" name="name" value="${data.id_student }">
+				<label for="id">작성자:</label><input id="name" name="name" value="${ data.id_student }">
 			</div>
 			<div class="button">
 				<input type="submit" value="글 작성">

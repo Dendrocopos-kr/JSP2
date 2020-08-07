@@ -76,7 +76,7 @@
 				<div>
 					작성일 :${data.r_dt}</div>
 				<div>
-					작성자 :${data.id_student}</div>
+					작성자 :${data.id_name}</div>
 			</div>
 			<div class="ctnt">${data.ctnt}</div>
 		</div>

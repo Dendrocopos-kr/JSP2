@@ -58,7 +58,7 @@ div {
 			<td><%=vo.getId_board()%></td>
 			<td><%=vo.getTitle()%></td>
 			<td><%=vo.getR_dt()%></td>
-			<td><%=vo.getId_student()%></td>
+			<td><%=vo.getId_name()%></td>
 		</tr>
 		<%
 			}
