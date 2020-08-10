@@ -1,6 +1,7 @@
 package com.koreait.board;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.koreait.board.common.Utils;
-import com.koreait.board.db.BoardDetailDAO;
+import com.koreait.board.db.BoardDAO;
 import com.koreait.board.vo.BoardVO;
 
 @WebServlet("/BoardRegmod")
@@ -23,7 +24,7 @@ public class BoardRegmodServlet extends HttpServlet {
 			BoardVO param = new BoardVO();
 			param.setId_board(check_mod);
 
-			request.setAttribute("data", BoardDetailDAO.selBoard(param));
+			request.setAttribute("data", BoardDAO.selBoard(param));
 		}
 		String path = "/WEB-INF/VIEW/boardWrite.jsp";
 		request.getRequestDispatcher(path).forward(request, response);

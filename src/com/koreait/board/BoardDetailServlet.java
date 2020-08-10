@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.koreait.board.common.Utils;
-import com.koreait.board.db.BoardDetailDAO;
+import com.koreait.board.db.BoardDAO;
 import com.koreait.board.vo.BoardVO;
 
 @WebServlet("/BoardDetail")
@@ -30,7 +30,7 @@ public class BoardDetailServlet extends HttpServlet {
 		BoardVO param = new BoardVO();
 		param.setId_board(check_Id);
 		
-		request.setAttribute("data", BoardDetailDAO.selBoard(param));
+		request.setAttribute("data", BoardDAO.selBoard(param));
 		request.getRequestDispatcher("/WEB-INF/VIEW/boardDetail.jsp").forward(request, response);
 	}
 

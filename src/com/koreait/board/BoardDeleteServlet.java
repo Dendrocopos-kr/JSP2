@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.koreait.board.common.Utils;
-import com.koreait.board.db.BoardDeleteDAO;
+import com.koreait.board.db.BoardDAO;
 import com.koreait.board.vo.BoardVO;
 
 @WebServlet("/BoardDel")
@@ -20,7 +20,7 @@ public class BoardDeleteServlet extends HttpServlet {
 		BoardVO param = new BoardVO();
 		param.setId_board( Utils.parseStringToInt(request.getParameter("id"),0 ));
 		System.out.println(param.getId_board());
-		if( BoardDeleteDAO.boardDelete(param)  == 0 ) {
+		if( BoardDAO.delete_Board(param)  == 0 ) {
 			// 에러문구
 			// 이미 삭제되었거나, 없는 페이지입니다.
 			response.sendRedirect("BoardList?warring=1");
