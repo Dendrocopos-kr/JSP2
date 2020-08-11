@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.koreait.board.common.Utils;
 import com.koreait.board.db.BoardDAO;;
 
 @WebServlet("/BoardList")
@@ -21,9 +22,11 @@ public class BoardListServlet extends HttpServlet {
 		//	String strId_board = request.getParameter("id_board");
 		//	System.out.println(strId_board);
 		request.setAttribute("data", BoardDAO.selBoardList());
+
+		//애러구문 스위치로 변경할것
+		request.setAttribute("Warring", Utils.parseStringToInt(request.getParameter("warring"),0) == -1 ? null : "");
+		request.setAttribute("Error", Utils.parseStringToInt(request.getParameter("err"),0) == -1 ? null : "");
 		
-		request.setAttribute("Warring", request.getParameter("warring"));
-		request.setAttribute("Error", request.getParameter("err"));
 		request.setAttribute("id", request.getParameter("id_board"));
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/VIEW/boardList.jsp");
@@ -37,3 +40,4 @@ public class BoardListServlet extends HttpServlet {
 		doGet(request, response);
 	}
 }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         

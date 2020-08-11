@@ -10,10 +10,6 @@
 <title>게시판</title>
 </head>
 <style>
-.itemRow:hover{
-	background: wheat;
-	cursor:pointer;
-}
 table {
 	border: black 1px solid;
 	margin: 10px auto;
@@ -24,10 +20,19 @@ th, td {
 	padding: 1em;
 	border: black 1px solid;
 	text-align: center;
+	color: black;
+	border: #66B3FF 1px solid;
+}
+tr:nth-child(odd){
+background: #8697A6;
+}
+tr:nth-child(even){
+background: #BFCDD9;
 }
 
 th {
-	background: linear-gradient(white, lightpink, white);
+	background: #51608C;
+	color:white;
 }
 
 td:nth-child(2) {
@@ -36,6 +41,11 @@ td:nth-child(2) {
 
 div {
 	text-align: center;
+}
+.itemRow:hover td{
+	background: #BF8756;
+	cursor:pointer;
+	color: #F2F2F0;
 }
 </style>
 <body>

@@ -20,12 +20,17 @@ public class BoardDeleteServlet extends HttpServlet {
 		BoardVO param = new BoardVO();
 		param.setId_board( Utils.parseStringToInt(request.getParameter("id"),0 ));
 		System.out.println(param.getId_board());
-		if( BoardDAO.delete_Board(param)  == 0 ) {
-			// 에러문구
-			// 이미 삭제되었거나, 없는 페이지입니다.
-			response.sendRedirect("BoardList?warring=1");
-		}else {
+		
+		switch( BoardDAO.delete_Board(param) ) {
+		case -1:
+			response.sendRedirect("BoardDetail?id="+param.getId_board()+"&err=1");
+			break;
+		case 0:
 			response.sendRedirect("BoardList");
+			break;
+		case 1:
+			response.sendRedirect("BoardList");
+		break;
 		}
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}

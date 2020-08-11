@@ -31,6 +31,8 @@ public class BoardDetailServlet extends HttpServlet {
 		param.setId_board(check_Id);
 		
 		request.setAttribute("data", BoardDAO.selBoard(param));
+		request.setAttribute("err", Utils.parseStringToInt(request.getParameter("err"),0) == 1 ? " 삭제실패했습니다." : null);
+		
 		request.getRequestDispatcher("/WEB-INF/VIEW/boardDetail.jsp").forward(request, response);
 	}
 

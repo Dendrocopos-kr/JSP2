@@ -12,6 +12,7 @@
 	padding: 10px;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 }
 
 form {
@@ -41,10 +42,16 @@ div textarea, div input {
 div textarea {
 	height: 400px;
 }
+
+.err_code {
+	color: red;
+	font-weight: bold;
+}
 </style>
 </head>
 <body>
 	<div class="container">
+		<h1 class="err_code">${err }</h1>
 		<form action="BoardWriteMod" method="post" onsubmit="return chk()" id="frm">
 			<input type="hidden" name="id_board" value="${data.id_board}">
 			<div>
@@ -58,7 +65,7 @@ div textarea {
 				<label for="id">작성자:</label><input id="name" name="name" value="${ data.id_student }">
 			</div>
 			<div class="button">
-				<input type="submit" value="글 작성">
+				<input type="submit" value="${submit_button_name}">
 			</div>
 		</form>
 		<button onclick="moveToList();">돌아가기</button>
@@ -86,6 +93,17 @@ div textarea {
 			console.log(PK);
 			location.href = 'BoardList';
 		}
+
+		(()=>{
+			switch(<%=request.getParameter("err")%>){
+			case 0:
+				break;
+			case 1:
+				alert(" 인성 문제있숴?");
+				break;
+			}
+			
+		})();
 	</script>
 </body>
 </html>

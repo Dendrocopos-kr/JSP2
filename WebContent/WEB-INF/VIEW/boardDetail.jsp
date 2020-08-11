@@ -14,14 +14,21 @@
 	display: flex;
 }
 
-.main_body div {
+.main_body div, .main_body textarea{
 	margin: 10px;
+}
+.main_body textarea{
+resize: none;
+margin:0px;
 }
 
 .ctnt {
+	display: flex;
 	border: black 1px solid;
 	height: 400px;
-	padding: 10px;
+	padding: 0px;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .board_ctnt_title, .profile {
@@ -47,6 +54,14 @@
 .profile {
 	justify-content: space-between;
 }
+.err{
+	color:red;
+	font-weight: bold;
+}
+.title{
+font-weight: bold;
+	font-size: 2em;
+}
 </style>
 <body>
 	<div class="main_body">
@@ -69,8 +84,9 @@
 		</div>
 		<div class="board_body">
 			<div class="board_ctnt_title">
-				<div>
-					제목 :${data.title}</div>
+				<div class="title">
+					제목 :${data.title}
+					<span class="err">${err}</span></div>
 			</div>
 			<div class="profile">
 				<div>
@@ -78,7 +94,9 @@
 				<div>
 					작성자 :${data.id_name}</div>
 			</div>
-			<div class="ctnt">${data.ctnt}</div>
+			<div class="ctnt">
+				<textarea rows="50" readonly="readonly">${data.ctnt}</textarea>
+			</div>
 		</div>
 	</div>
 	<script type="text/javascript">

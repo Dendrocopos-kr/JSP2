@@ -98,15 +98,15 @@ public class BoardDAO {
 		return vo;
 	}
 
-	public static boolean insert_Mod(BoardVO param) {
+	public static int insert_Mod(BoardVO param) {
 		String sql = " insert into" + " t_board (id_board,title,ctnt,id_student)" + " VALUES"
 				+ " (seq_board.nextval,?,?,?) ";
 		return insert_SQL(param, sql);
 	}
-	private static boolean insert_SQL(BoardVO param, String sql) {
+	private static int insert_SQL(BoardVO param, String sql) {
 		Connection conn = null;
 		PreparedStatement ps = null;
-		int rs = 0;
+		int rs = -1;
 
 		try {
 			conn = DBConnection.getConn();
@@ -128,24 +128,24 @@ public class BoardDAO {
 			// select => executeQuery();
 			// 그 외는 다른거
 			// board.setId_board(rs.getInt("ID_BOARD"));
-			return true;
+			return rs;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return false;
+			return rs;
 		} finally {
 			DBConnection.close(conn, ps);
 		}
 	}
 
-	public static boolean update_Mod(BoardVO param) {
+	public static int update_Mod(BoardVO param) {
 		String sql = " update" + " t_board" + " set" + " title = ?, ctnt = ?, id_student = ?" + " where"
 				+ " id_board = ? ";
 		return update_SQL(param, sql);
 	}
-	private static boolean update_SQL(BoardVO param, String sql) {
+	private static int update_SQL(BoardVO param, String sql) {
 		Connection conn = null;
 		PreparedStatement ps = null;
-		int rs = 0;
+		int rs = -1;
 
 		try {
 			conn = DBConnection.getConn();
@@ -164,10 +164,10 @@ public class BoardDAO {
 			// select => executeQuery();
 			// 그 외는 다른거
 			// board.setId_board(rs.getInt("ID_BOARD"));
-			return true;
+			return rs;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return false;
+			return rs;
 		} finally {
 			DBConnection.close(conn, ps);
 		}

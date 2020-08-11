@@ -18,14 +18,18 @@ public class BoardRegmodServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		BoardVO param = new BoardVO();
 		int check_mod = Utils.parseStringToInt(request.getParameter("id"), 0);
 
-		if (check_mod != 0) {
-			BoardVO param = new BoardVO();
+		if (check_mod > 0) {
 			param.setId_board(check_mod);
-
 			request.setAttribute("data", BoardDAO.selBoard(param));
 		}
+
+		request.setAttribute("submit_button_name", check_mod > 0 ? "글 수정" :"글 등록");
+		
+		request.setAttribute("err", Utils.parseStringToInt(request.getParameter("err"),0) > 0 ? "애러 발생": null );
+		
 		String path = "/WEB-INF/VIEW/boardWrite.jsp";
 		request.getRequestDispatcher(path).forward(request, response);
 		// response.getWriter().append("Served at: ").append(request.getContextPath());

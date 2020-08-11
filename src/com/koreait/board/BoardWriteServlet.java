@@ -18,26 +18,34 @@ public class BoardWriteServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		BoardVO param = new BoardVO();
-		param.setId_board(Utils.parseStringToInt(request.getParameter("id_board"),0));
+		param.setId_board(Utils.parseStringToInt(request.getParameter("id_board"), 0));
 		param.setTitle(request.getParameter("title"));
 		param.setCtnt(request.getParameter("ctnt"));
 		param.setId_student(Utils.parseStringToInt(request.getParameter("name"), 0));
 
-		if(param.getId_board() == 0) {
-			if (BoardDAO.insert_Mod(param)) {
+		if (param.getId_board() == 0) {
+			switch (BoardDAO.insert_Mod(param)) {
+			case -1:
+				response.sendRedirect("BoardRegmod?err=1");
+				break;
+			case 0:
+				break;
+			case 1:
 				response.sendRedirect("BoardList");
-			}else {
-				response.sendRedirect("BoardList?err=1");
-				//실패시 이동할 경로 insert err
+				break;
 			}
-		}else {
-			if(BoardDAO.update_Mod(param)) {
-				response.sendRedirect("BoardDetail?id="+param.getId_board());
-			}else {
+		} else {
+			switch(BoardDAO.update_Mod(param)) {
+			case -1:
 				response.sendRedirect("BoardList?err=2");
-				//실패시 이동할 경로 update err
+				break;
+			case 0:
+				break;
+			case 1:
+				response.sendRedirect("BoardDetail?id=" + param.getId_board());
+				break;
 			}
 		}
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
