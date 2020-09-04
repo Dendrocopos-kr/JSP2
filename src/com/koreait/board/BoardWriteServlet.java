@@ -18,15 +18,19 @@ public class BoardWriteServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		BoardVO param = new BoardVO();
-		param.setId_board(Utils.parseStringToInt(request.getParameter("id_board"), 0));
+		param.setId_board(Utils.parseStringToInt(request.getParameter("id"), 0));
 		param.setTitle(request.getParameter("title"));
 		param.setCtnt(request.getParameter("ctnt"));
 		param.setId_student(Utils.parseStringToInt(request.getParameter("name"), 0));
 
-		if (param.getId_board() == 0) {
-			switch (BoardDAO.insert_Mod(param)) {
+		if (param.getId_board() == 0) { //새글쓰기
+			switch (BoardDAO.insert_Mod(param)) { //새글 쓰기 쿼리문 실행
 			case -1:
 				response.sendRedirect("BoardRegmod?err=1");
 				break;
@@ -36,8 +40,8 @@ public class BoardWriteServlet extends HttpServlet {
 				response.sendRedirect("BoardList");
 				break;
 			}
-		} else {
-			switch(BoardDAO.update_Mod(param)) {
+		} else { // 수정하기
+			switch(BoardDAO.update_Mod(param)) { // 수정하기 쿼리문 실행
 			case -1:
 				response.sendRedirect("BoardList?err=2");
 				break;
@@ -48,11 +52,6 @@ public class BoardWriteServlet extends HttpServlet {
 				break;
 			}
 		}
-		// response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

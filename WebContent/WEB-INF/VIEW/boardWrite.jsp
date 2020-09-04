@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>${data == null ? '글 등록' : '글 수정' }</title>
 <style type="text/css">
 .container {
 	width: 600px;
@@ -52,8 +52,8 @@ div textarea {
 <body>
 	<div class="container">
 		<h1 class="err_code">${err }</h1>
-		<form action="BoardWriteMod" method="post" onsubmit="return chk()" id="frm">
-			<input type="hidden" name="id_board" value="${data.id_board}">
+		<form action=${data == null ? 'BoardWriteMod' : 'BoardMod' } method="post" onsubmit="return chk()" id="frm">
+			<input type="hidden" name="id" value="${data.id_board}">
 			<div>
 				<label for="title">제목:</label><input id="title" name="title" value="${data.title}">
 			</div>
@@ -65,7 +65,7 @@ div textarea {
 				<label for="id">작성자:</label><input id="name" name="name" value="${ data.id_student }">
 			</div>
 			<div class="button">
-				<input type="submit" value="${submit_button_name}">
+				<input type="submit" value="${data == null ? '글 등록' : '글 수정' }">
 			</div>
 		</form>
 		<button onclick="moveToList();">돌아가기</button>
